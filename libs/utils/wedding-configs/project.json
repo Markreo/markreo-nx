@@ -1,0 +1,20 @@
+{
+  "name": "utils-wedding-configs",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/utils/wedding-configs/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/utils/wedding-configs/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

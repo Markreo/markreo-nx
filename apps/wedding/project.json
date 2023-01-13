@@ -6,7 +6,7 @@
   "prefix": "mk",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/wedding",
@@ -17,7 +17,10 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/wedding/src/favicon.ico", "apps/wedding/src/assets"],
         "styles": ["apps/wedding/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/wedding/webpack.config.js"
+        }
       },
       "configurations": {
         "production": {
@@ -47,7 +50,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nrwl/angular:webpack-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "wedding:build:production"
