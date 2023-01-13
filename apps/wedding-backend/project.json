@@ -1,0 +1,40 @@
+{
+  "name": "wedding-backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/wedding-backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/wedding-backend",
+        "main": "apps/wedding-backend/src/main.ts",
+        "tsConfig": "apps/wedding-backend/tsconfig.app.json",
+        "assets": ["apps/wedding-backend/src/assets"],
+        "webpackConfig": "apps/wedding-backend/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "wedding-backend:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "wedding-backend:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}
