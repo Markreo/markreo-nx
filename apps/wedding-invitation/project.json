@@ -1,0 +1,53 @@
+{
+  "name": "wedding-invitation",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/wedding-invitation/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/wedding-invitation",
+        "main": "apps/wedding-invitation/src/main.ts",
+        "tsConfig": "apps/wedding-invitation/tsconfig.app.json",
+        "assets": ["apps/wedding-invitation/src/assets", "apps/wedding-invitation/src/views", "apps/wedding-invitation/src/public"],
+        "webpackConfig": "apps/wedding-invitation/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "options": {
+        "buildTarget": "wedding-invitation:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "wedding-invitation:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/wedding-invitation/**/*.ts"]
+      }
+    }
+  },
+  "tags": [],
+  "compilerOptions": {
+    "assets": [
+      "**/*.hbs"
+    ]
+  }
+
+}
